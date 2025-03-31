@@ -20,12 +20,14 @@ public partial class EditarProduto : ContentPage
                 Id = produto_anexado.Id,
                 Descricao = txt_descricao.Text,
                 Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Preco = Convert.ToDouble(txt_preco.Text),
+                Categoria = (string)picker_categoria.SelectedItem
             };
 
             await App.Db.Update(p);
-            await DisplayAlert("Sucesso!", "Registro Atualizado", "OK");
+            await DisplayAlert("Sucesso", "Registro Atualizado", "OK");
             await Navigation.PopAsync();
+
         }
         catch (Exception ex)
         {

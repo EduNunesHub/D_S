@@ -1,4 +1,5 @@
 using MauiAppMinhasCompras.Models;
+using System.Threading.Tasks;
 
 namespace MauiAppMinhasCompras.Views;
 
@@ -17,11 +18,12 @@ public partial class NovoProduto : ContentPage
             {
                 Descricao = txt_descricao.Text,
                 Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Preco = Convert.ToDouble(txt_preco.Text),
+                Categoria = (string)picker_categoria.SelectedItem
             };
 
             await App.Db.Insert(p);
-            await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
+            await DisplayAlert("Sucesso", "Registro Inserido", "OK");
             await Navigation.PopAsync();
 
         }
